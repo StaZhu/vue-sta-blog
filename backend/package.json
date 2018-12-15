@@ -1,0 +1,20 @@
+{
+  "name": "vue-sta-blog-api",
+  "version": "1.0.0",
+  "description": "backend-api",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "nohup node index.js > node.log &",
+    "kill": "kill -9 `pgrep -f index.js`"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "axios": "^0.18.0",
+    "lodash": "^4.17.11",
+    "sharp": "^0.21.0"
+  }
+}

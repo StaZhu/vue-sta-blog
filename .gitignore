@@ -1,0 +1,40 @@
+# frontend temp
+.DS_Store
+node_modules
+dist
+
+# backend temp
+backend/node.log
+backend/node_modules
+
+# svgs and psd source files
+assets
+
+# photos
+public/img/photo/*
+!public/img/photo/xidian-hotel
+!public/img/photo/story-with-my-cat
+
+# articles
+public/docs/*
+!public/docs/macOS技巧总结.md
+!public/docs/一个简单的实现ddns的php脚本.md
+
+
+# local env files
+.env.local
+.env.*.local
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw*
