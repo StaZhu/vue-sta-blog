@@ -3,6 +3,7 @@ import router from './router.js'
 import SvgIcon from '@/components/SvgIcon.vue'
 import store from './store.js'
 import App from './App.vue'
+import './registerServiceWorker'
 import './styles/index.scss'
 
 Vue.component('svg-icon', SvgIcon)

@@ -1,18 +1,19 @@
 module.exports = {
+  outputDir: 'dist',
   filenameHashing: false,
   pages: {
     console: {
       entry: 'src/pages/console/main.js',
       template: 'public/console.html',
       filename: 'console.html',
-      title: 'Sta\'s Console',
+      title: 'Sta | Console',
       // chunks: ['chunk-vendors', 'chunk-common', 'index']
     },
     blog: {
       entry: 'src/pages/blog/main.js',
       template: 'public/blog.html',
       filename: 'blog.html',
-      title: 'Sta\'s Blog',
+      title: 'Sta | Blog',
       // chunks: ['chunk-venders', 'chunk-common', 'index']
     }
   },
@@ -28,8 +29,8 @@ module.exports = {
       .options({ symbolId: 'svg-[name]' })
   },
   css: {
-    // extract: false
-    // sourceMap: true
+    extract: true,
+    sourceMap: false
   },
   devServer: {
     open: true,
@@ -65,6 +66,29 @@ module.exports = {
         { from: /\/console\/*/, to: '/console.html' },
         { from: /\//, to: '/blog.html' }
       ]
+    }
+  },
+  pwa: {
+    name: 'Sta | Blog',
+    themeColor: '#fff',
+    msTileColor: '#fff',
+    appleMobileWebAppCapable: 'yes',
+    appleMobileWebAppStatusBarStyle: 'white',
+    workboxPluginMode: 'GenerateSW',
+    workboxOptions: {
+      swDest: 'service-worker.js',
+      importWorkboxFrom: 'local',
+      importsDirectory: 'js/wb-assets',
+      include: [/\.html$/, /\.js$/,  /\.css$/],
+      precacheManifestFilename: 'prefetch-manifest.[manifestHash].js',
+      offlineGoogleAnalytics: false
+    },
+    iconPaths: {
+      favicon32: 'img/icons/favicon-32x32.png',
+      favicon16: 'img/icons/favicon-16x16.png',
+      appleTouchIcon: 'img/icons/apple-touch-icon-180x180.png',
+      maskIcon: 'img/icons/safari-pinned-tab.svg',
+      msTileImage: 'img/icons/msapplication-icon-144x144.png'
     }
   }
 }
