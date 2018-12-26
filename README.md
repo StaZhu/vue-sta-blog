@@ -1,6 +1,6 @@
 # vue-sta-blog
 
-### 演示地址
+### 地址
 
 https://www.stazhu.com
 
