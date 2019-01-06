@@ -29,7 +29,6 @@ export default {
 <style lang="scss">
 .main-contaier {
   height: 100%;
-  // width: 1024px;
 }
 </style>
 

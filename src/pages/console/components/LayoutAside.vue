@@ -75,6 +75,7 @@ $menuBg: black;
 </style>
 <style lang="scss" scoped>
 .el-menu {
+  flex: none;
   overflow-y: scroll;
 }
 </style>

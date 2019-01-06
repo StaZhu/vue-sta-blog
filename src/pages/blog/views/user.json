@@ -1,0 +1,52 @@
+{
+  "name": "ajax-and-promise-and-async-await",
+  "amount": 7,
+  "users": [
+    {
+      "name": "sta",
+      "date": "2018-12-31",
+      "location": "陕西西安",
+      "content": "评论测试ing。。。",
+      "reply": [
+        {
+          "name": "ggd",
+          "date": "2019-1-1",
+          "location": "北京",
+          "content": "加油"
+        },
+        {
+          "name": "lyg",
+          "date": "2019-3-1",
+          "location": "北京",
+          "content": "点赞"
+        }
+      ]
+    },
+    {
+      "name": "孙哲宇",
+      "date": "2018-12-31",
+      "location": "陕西渭南",
+      "content": "兄弟加油"
+    },
+    {
+      "name": "lyg",
+      "date": "2018-10-9",
+      "location": "陕西西安",
+      "content": "坐等评论",
+      "reply": [
+        {
+          "name": "ggd",
+          "date": "2019-1-1",
+          "location": "北京",
+          "content": "来了"
+        }
+      ]
+    },
+    {
+      "name": "sta",
+      "date": "2019-6-7",
+      "location": "陕西西安",
+      "content": "撰写中🙂"
+    }
+  ]
+}

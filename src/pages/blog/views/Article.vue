@@ -1,15 +1,11 @@
 <template>
   <main class="article-main main">
     <div class="article-page" :class="{ expanded: isExpanded }" @click="closeNavbar()">
-      <div class="article-page-content markdown-body" :class="{ active: isArticleLoaded }" v-html="activeContent" v-highlight></div>
-      <div class="article-page-content article-page-fake markdown-body" :class="{ active: !isArticleLoaded }">
-        <h1></h1>
-        <p class="date"></p>
-        <p v-for="value in Array.from({ length: 100 }, (value, key) => key)" :key="value"></p>
-      </div>
+      <ArticleContent :isArticleLoaded="isArticleLoaded" :activeContent="activeContent"/>
+      <ArticleComment :id="index"/>
       <Footer/>
     </div>
-    <div class="article-nav" :class="{ 'article-nav-toggle': isCollapsed, expanded: isExpanded }" @click="openNavbar()">
+    <div class="article-nav" :class="{ toggled: isCollapsed, expanded: isExpanded }" @click="openNavbar()">
       <template v-for="year in years">
         <p :key="'p' + year" class="article-nav-year">{{ year }}</p>
         <ul :key="'ul' + year" class="article-nav-content">
@@ -30,34 +26,18 @@
 </template>
 
 <script>
+import ArticleContent from './ArticleContent.vue'
+import ArticleComment from './ArticleComment.vue'
 import Footer from '../components/Footer.vue'
 import marked from 'marked'
 import axios from 'axios'
-import highlight from 'highlight.js/lib/highlight'
-import javascript from 'highlight.js/lib/languages/javascript'
-import php from 'highlight.js/lib/languages/php'
-import sql from 'highlight.js/lib/languages/sql'
-import bash from 'highlight.js/lib/languages/bash'
-import 'highlight.js/styles/purebasic.css'
-highlight.registerLanguage('javascript', javascript)
-highlight.registerLanguage('sql', sql)
-highlight.registerLanguage('php', php)
-highlight.registerLanguage('bash', bash)
 
 export default {
   name: 'Article',
   components: {
+    ArticleContent,
+    ArticleComment,
     Footer
-  },
-  directives: {
-    highlight: {
-      update: function (el) {
-        let blocks = el.querySelectorAll('pre code')
-        for (let i = 0; i < blocks.length; i++) {
-          highlight.highlightBlock(blocks[i])
-        }
-      }
-    }
   },
   data () {
     return {
@@ -68,7 +48,8 @@ export default {
       isListLoaded: false,
       isArticleLoaded: false,
       files: [],
-      folderName: ''
+      folderName: '',
+      index: null
     }
   },
   computed: {
@@ -140,6 +121,7 @@ export default {
       for (let i = 0; i < this.files.length; i++) {
         if (title === this.files[i].title) {
           this.activeName = this.files[i].name
+          this.index = this.files[i].index
           axios({
             method: 'GET',
             url: this.files[i].url,
@@ -184,30 +166,6 @@ $nav-color: white;
   padding-top: 0.8rem;
   padding-left: $nav-width;
   background-color: $background-color;
-
-  .article-page-content {
-    display: none;
-    margin: 4vw;
-    padding: 8vw;
-    min-height: calc(100vh - 0.8rem - 8vw);
-    background-color: white;
-    border-radius: 0.2rem;
-    overflow: hidden;
-    &.active {
-      display: block;
-    }
-  }
-}
-
-.article-page-fake {
-  h1, p {
-    width: 100%;
-    height: 1em;
-    background-color: $background-color;
-    &.date {
-      width: 130px;
-    }
-  }
 }
 
 .article-nav {
@@ -283,9 +241,6 @@ $nav-color: white;
     &.expanded {
       transform: translateX(70vw);
     }
-    .article-page-content {
-      margin: 4vw 4vw 4vw calc(4vw + 0.2rem);
-    }
   }
   .article-nav {
     @keyframes slide-navbar {
@@ -295,13 +250,13 @@ $nav-color: white;
     animation: slide-navbar 1s;
     box-shadow: 0.17rem 0 0.2rem -0.2rem rgba(0, 0, 0, 0.5);
     transform: translateX(0);
-    &.article-nav-toggle {
+    &.toggled {
       transform: translateX(calc(-#{$nav-width} + 0.2rem));
     }
     &.expanded {
       transform: translateX(70vw);
     }
-    &.article-nav-toggle.expanded {
+    &.toggled.expanded {
       transform: translateX(calc(-#{$nav-width} + 0.2rem + 70vw));
     }
   }

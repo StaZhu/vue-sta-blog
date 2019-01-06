@@ -17,6 +17,9 @@
           <h1>项目</h1>
           <h5>stazhu.com - 基于Vue的响应式多页静态个人网站</h5>
           <p>
+            GitHub：<a href="https://github.com/StaZhu/vue-sta-blog" target="_blank" rel="noreferrer noopener">https://github.com/StaZhu/vue-sta-blog</a>
+          </p>
+          <p>
             网站分为前台页面和后台管理页面。
           </p>
           <p>

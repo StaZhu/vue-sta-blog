@@ -6,6 +6,7 @@ dist
 # backend temp
 backend/node.log
 backend/node_modules
+backend/src/commentListConfig.js
 
 # svgs and psd source files
 assets

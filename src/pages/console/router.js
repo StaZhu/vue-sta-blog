@@ -23,6 +23,12 @@ export default new Router({
           component: () => import('./views/Dashboard.vue')
         },
         {
+          path: 'article',
+          name: 'Article',
+          meta: { icon: 'article' },
+          component: () => import('./views/Article.vue')
+        },
+        {
           path: 'example',
           name: 'Example',
           meta: { icon: 'example' },
@@ -36,12 +42,6 @@ export default new Router({
               component: () => import('./views/ExampleTree.vue')
             }
           ]
-        },
-        {
-          path: 'form',
-          name: 'Form',
-          meta: { icon: 'form' },
-          component: () => import('./views/Form.vue')
         }
       ],
       beforeEnter: (to, from, next) => {

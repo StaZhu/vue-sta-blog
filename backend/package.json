@@ -11,10 +11,13 @@
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "mysql2": "^1.6.4"
+  },
   "devDependencies": {
     "axios": "^0.18.0",
     "lodash": "^4.17.11",
+    "sequelize": "^4.42.0",
     "sharp": "^0.21.0"
   }
 }

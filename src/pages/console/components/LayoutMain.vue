@@ -20,7 +20,9 @@ export default {
 
 <style type="scss" scoped>
 .el-main {
+  position: relative;
   font-size: 16px;
+  width: 100%;
 }
 .main-leave-to {
   opacity: 0;
@@ -30,7 +32,6 @@ export default {
 .main-enter {
   opacity: 0;
   transform: translateY(-20px);
-  position: absolute;
 }
 
 .main-leave-active {
@@ -40,5 +41,6 @@ export default {
 
 .main-enter-active {
   transition: all .9s;
+  position: absolute;
 }
 </style>
